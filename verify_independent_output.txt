@@ -1,0 +1,12 @@
+Q1 Morgan FTE (incl. leader): 418
+Q2 Dana FTE TCC: $45,439,575.40 across 552 FTEs
+Q3 FTE headcount 2025-12-31 1935
+Q3 FTE headcount 2026-06-30 1984
+Q3 FTE headcount 2026-08-31 1991
+Q3 FTE headcount 2026-09-01 1991
+Q4 2024 Q4: 25 vol exits, avg HC 1806.3, annualized 5.49%
+Q4 2025 Q4: 34 vol exits, avg HC 1913.9, annualized 7.05%
+Q4 2026 Q2: 50 vol exits, avg HC 1974.4, annualized 10.16%
+Q4 2026 Q3 to date: 41 vol exits, avg HC 1990.5, annualized 12.13%
+Q5 lt1: last 12m 74 exits / 268.8 = 27.53%; prior 12m 49 / 375.4 = 13.05%
+Q5 ge1: last 12m 106 exits / 1679.9 = 6.31%; prior 12m 80 / 1462.6 = 5.47%

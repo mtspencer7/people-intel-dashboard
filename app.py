@@ -16,7 +16,19 @@ import streamlit as st
 import pipeline as p
 
 ROOT = Path(__file__).parent
-DEFAULT_DATA = ROOT / "data" / "people_data.xlsx"
+def find_default_data() -> Path | None:
+    """Look for the on-record workbook in data/ first, then the repo root (any *people_data*.xlsx)."""
+    for folder in (ROOT / "data", ROOT):
+        exact = folder / "people_data.xlsx"
+        if exact.exists():
+            return exact
+        hits = sorted(folder.glob("*people_data*.xlsx"))
+        if hits:
+            return hits[0]
+    return None
+
+
+DEFAULT_DATA = find_default_data()
 
 # Palette (validated categorical slots; see write-up). Text never wears series colour.
 BLUE, ORANGE, GRAY, LIGHTGRAY = "#2a78d6", "#eb6834", "#8a8984", "#d9d8d4"
@@ -58,6 +70,9 @@ with st.sidebar:
     up = st.file_uploader("Data file (optional)", type=["xlsx"],
                           help="Leave empty to use the latest file on record. To refresh, upload this month's "
                                "people_data.xlsx export. It must have the same 7 sheets.")
+    if up is None and DEFAULT_DATA is None:
+        st.info("No data file on record yet. Upload this month's **people_data.xlsx** above to get started.")
+        st.stop()
     raw = up.getvalue() if up else DEFAULT_DATA.read_bytes()
     try:
         d = load_cached(hashlib.md5(raw).hexdigest(), raw)
